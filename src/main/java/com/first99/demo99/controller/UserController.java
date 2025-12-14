@@ -12,23 +12,28 @@ import java.util.List;
 public class UserController {
 
 
-        private final UserService userService;
+    private final UserService userService;
 
-        // Constructor injection
-        public UserController(UserService userService) {
-            this.userService = userService;
-        }
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-        @GetMapping
-        public List<User> getAllUsers() {
-            return userService.getUsers();
-        }
+    @GetMapping
+    public List<User> getUsers() {
+        return userService.getAllUsers();
+    }
 
-        @PostMapping
-        public User createUser(@RequestBody User user) {
-            return userService.addUser(user);
-        }
+    @PostMapping
+    public User create(@RequestBody User user) {
+        return userService.createUser(user);
+    }
 
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "User deleted";
+    }
 
 
 

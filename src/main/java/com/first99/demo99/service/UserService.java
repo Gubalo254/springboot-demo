@@ -1,18 +1,30 @@
 package com.first99.demo99.service;
 
 import com.first99.demo99.model.User;
+import com.first99.demo99.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserService {
-    private final List<User> users = new ArrayList<>();
+    private final UserRepository userRepository;
 
-    public List<User> getUsers() { return users; }
-    public User addUser(User user) {
-        users.add(user);
-        return user;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
+
+
+    public void deleteUser(Long id) {
+
+        userRepository.deleteById(id);
     }
 }
