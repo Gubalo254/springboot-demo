@@ -1,18 +1,18 @@
 package com.first99.demo99.service;
 
 import com.first99.demo99.model.User;
+import com.first99.demo99.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class UserService {
-    private final List<User> users = new ArrayList<>();
 
-    public List<User> getUsers() { return users; }
-    public User addUser(User user) {
-        users.add(user);
-        return user;
-    }
+public interface UserService {
+
+    User registerUser(User user);              // register a new user
+    User loginUser(String email, String password); // login with email & password
+    void deleteUser(Long id);                  // delete a user by id
+    List<User> getAllUsers();                  // optional: list all users
+
 }
+

@@ -11,25 +11,32 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    private final UserService userService; // interface type, not implementation
 
-        private final UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-        // Constructor injection
-        public UserController(UserService userService) {
-            this.userService = userService;
-        }
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        return userService.registerUser(user);
+    }
 
-        @GetMapping
-        public List<User> getAllUsers() {
-            return userService.getUsers();
-        }
+    @PostMapping("/login")
+    public User login(@RequestParam String email, @RequestParam String password) {
+        return userService.loginUser(email, password);
+    }
 
-        @PostMapping
-        public User createUser(@RequestBody User user) {
-            return userService.addUser(user);
-        }
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "User deleted successfully";
+    }
 
-
+    @GetMapping
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
 
 
     }
