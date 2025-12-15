@@ -6,25 +6,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class UserService {
-    private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+public interface UserService {
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+    User registerUser(User user);              // register a new user
+    User loginUser(String email, String password); // login with email & password
+    void deleteUser(Long id);                  // delete a user by id
+    List<User> getAllUsers();                  // optional: list all users
 
-    public User createUser(User user) {
-        return userRepository.save(user);
-    }
-
-
-    public void deleteUser(Long id) {
-
-        userRepository.deleteById(id);
-    }
 }
+
