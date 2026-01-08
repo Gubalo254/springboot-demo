@@ -2,30 +2,48 @@ package com.first99.demo99.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import lombok.*;
+
+import java.util.Set;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
 
 @Entity
-@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @NotBlank
+    @Column(nullable = false)
+    private String password;
+
+    @NotBlank
+    @Column(nullable = false)
     private String name;
-    private int age;
 
-    public User(){
 
-    }
-    public Long getId() { return id; }
-    public String getName() {
-        return name;}
-    public void setName(String name){
-        this.name = name;}
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))//name of thr other table
+    @Column(name = "role")
+    private Set<String> roles;
 
-    public int getAge() {
-        return age;}
-    public void setAge(int age){
-        this.age = age;}
+    // getters & setters
+
 
 }
+
+
+
+
+
