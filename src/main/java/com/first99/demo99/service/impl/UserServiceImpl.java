@@ -1,10 +1,11 @@
-package com.first99.demo99.service;
+package com.first99.demo99.service.impl;
 
 
 import com.first99.demo99.exception.EmailExistsException;
 import com.first99.demo99.exception.InvalidCredentialsException;
 import com.first99.demo99.model.User;
 import com.first99.demo99.repository.UserRepository;
+import com.first99.demo99.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

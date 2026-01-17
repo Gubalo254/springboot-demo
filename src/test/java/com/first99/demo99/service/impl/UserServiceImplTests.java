@@ -4,7 +4,6 @@ import com.first99.demo99.exception.EmailExistsException;
 import com.first99.demo99.exception.InvalidCredentialsException;
 import com.first99.demo99.model.User;
 import com.first99.demo99.repository.UserRepository;
-import com.first99.demo99.service.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
