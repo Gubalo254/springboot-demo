@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -38,7 +39,8 @@ public class UserServiceImpl implements UserService {
         user.setName(name);
 
         // Assign default role
-        user.setRoles(Set.of("USER"));
+
+        user.setRoles(new HashSet<>(Set.of("USER")));
 
         userRepository.save(user);
         return user;

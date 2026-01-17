@@ -2,7 +2,7 @@ package com.first99.demo99.controller;
 import com.first99.demo99.dto.UserResponse;
 import com.first99.demo99.model.User;
 import com.first99.demo99.service.UserService;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 
 import org.springframework.web.bind.annotation.*;
 
