@@ -11,6 +11,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "job_applications")
 @Data
 public class JobApplication {
 
