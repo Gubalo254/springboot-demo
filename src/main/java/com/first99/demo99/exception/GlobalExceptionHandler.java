@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class ValidationExceptionHandler {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(
@@ -42,4 +42,24 @@ public class ValidationExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(Map.of("error", ex.getMessage()));
     }
+
+
+    @ExceptionHandler(JobApplicationCreationException.class)
+    public ResponseEntity<Map<String, String>> handleJobApplicationCreation(
+            JobApplicationCreationException ex) {
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", ex.getMessage()));
+    }
+    @ExceptionHandler(JobApplicationRetrievalException.class)
+    public ResponseEntity<Map<String, String>> handleRetrievalError(
+            JobApplicationRetrievalException ex) {
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("error", ex.getMessage()));
+    }
+
+
 }
