@@ -7,12 +7,7 @@ import jakarta.validation.constraints.PastOrPresent;
 import lombok.*;
 
 import java.time.LocalDate;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@Data
 public class CreateJobApplicationRequest {
 
     @NotBlank(message = "Company name is required")

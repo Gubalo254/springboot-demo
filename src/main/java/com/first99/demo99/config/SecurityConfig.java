@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/login", "/user/register")
                         .permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN") // only admins
+                        .requestMatchers("/applications/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .userDetailsService(customUserDetailsService)

@@ -26,9 +26,9 @@ public class JobApplicationController {
         this.jobApplicationService = jobApplicationService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public JobApplicationResponse createJobApplication(
-            @Valid @RequestBody CreateJobApplicationRequest request,
+           @RequestBody  @Valid  CreateJobApplicationRequest request,
             @AuthenticationPrincipal CustomUserDetails principal
     ) {
         User user = principal.getUser();
